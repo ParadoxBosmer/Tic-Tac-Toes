@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 37253a58b146e614baf1c89d37611e8b
+guid: bdeae221b54e8e64f9968625a861ebca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3587753197306472706
-    second: particle1_0
+      213: -8562999259800848901
+    second: cogWheel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: particle1_0
+      name: cogWheel_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 42
+        y: 42
+        width: 2211
+        height: 2211
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef696ccc97db53ec0800000000000000
-      internalID: -3587753197306472706
+      spriteID: bf533abba8d1a2980800000000000000
+      internalID: -8562999259800848901
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      particle1_0: -3587753197306472706
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

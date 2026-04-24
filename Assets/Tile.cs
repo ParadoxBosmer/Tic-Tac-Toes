@@ -4,7 +4,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] int x;
     [SerializeField] int y;
-    [SerializeField] SpriteRenderer renderer;
+    [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] Sprite spriteX;
     [SerializeField] Sprite spriteO;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,25 +25,25 @@ public class Tile : MonoBehaviour
 
         if (state== GameStates.Player1Turn)
         {
-            renderer.sprite = spriteX;
+            _spriteRenderer.sprite = spriteX;
             
         }
         else if(state== GameStates.Player2Turn)
         {
-            renderer.sprite = spriteO;
+            _spriteRenderer.sprite = spriteO;
         }
 
         switch (state) {
             case GameStates.Player1Turn:
                 {
-                    renderer.sprite = spriteX;
+                    _spriteRenderer.sprite = spriteX;
                     GameStateManager.Instance.updateScore(x, y);
                     GameStateManager.Instance.GetNextTurn();
                     break;
                 }
             case GameStates.Player2Turn:
                 {
-                    renderer.sprite = spriteO;
+                    _spriteRenderer.sprite = spriteO;
                     GameStateManager.Instance.updateScore(x, y);
                     GameStateManager.Instance.GetNextTurn();
                     break;
