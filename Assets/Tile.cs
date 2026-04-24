@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _spriteRenderer=GetComponentInParent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -21,8 +21,10 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (_spriteRenderer.sprite != null) return;
+        
         var state = GameStateManager.Instance.GetCurrentTurn();
-
+    
         if (state== GameStates.Player1Turn)
         {
             _spriteRenderer.sprite = spriteX;

@@ -975,7 +975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 2
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 309089026}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &309089028
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 2
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 369240827}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &369240829
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 2
   y: 2
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 575239611}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &575239613
@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 2
   y: 0
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 612374705}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &612374707
@@ -1746,8 +1746,8 @@ Transform:
   m_GameObject: {fileID: 612374703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3035743, y: 1.2206913, z: 0.010038026}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.3035743, y: 1.130691, z: 0.010038026}
+  m_LocalScale: {x: 2.5, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1888694975}
@@ -2934,7 +2934,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3021,7 +3021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ef1d16a77b6f94a90e9fb86351191a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  parent: {fileID: 1135100663}
 --- !u!1 &1072553197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 0
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 1102845855}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &1102845857
@@ -3304,8 +3304,8 @@ Transform:
   m_GameObject: {fileID: 1102845853}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.47357428, y: 1.2206913, z: 0.010038026}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.47357428, y: 1.130691, z: 0.010038026}
+  m_LocalScale: {x: 1.7, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1888694975}
@@ -4076,7 +4076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 1
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 1398147087}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &1398147089
@@ -4228,7 +4228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 1
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 1409594750}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &1409594752
@@ -4380,7 +4380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 2
   y: 1
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 1467623074}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &1467623076
@@ -4486,7 +4486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 1483226149}
   spriteX: {fileID: 5800915590215233699, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
   spriteO: {fileID: -4543041181297324008, guid: ae388450a3b3e0a43b9d8b159ff90027, type: 3}
 --- !u!4 &1483226151
@@ -4499,7 +4499,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.9164257, y: 1.1306914, z: 0.010038026}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1888694975}
@@ -5314,6 +5314,7 @@ MonoBehaviour:
   winnerText: {fileID: 1357425775}
   finalTimeText: {fileID: 20077341}
   popup: {fileID: 872465876}
+  settingsPopup: {fileID: 1491795168}
 --- !u!4 &1920457203
 Transform:
   m_ObjectHideFlags: 0
