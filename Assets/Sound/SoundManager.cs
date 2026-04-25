@@ -11,7 +11,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip background;
     [SerializeField] AudioClip placeSign;
     [SerializeField] AudioClip winSound;
-    
+
+    [Header("------- Ticks --------")] 
+    public bool mutedMusic=false;
+    public bool mutedSFX=false;
     public static SoundManager Instance { get; private set; }
 
     public void Awake()
@@ -34,6 +37,10 @@ public class SoundManager : MonoBehaviour
     public void Start()
     {
         musicSource.clip= background;
+        musicSource.loop = true; 
+        
+        if (mutedMusic) MuteMusic();
+        if (mutedSFX) MuteSFX();
         musicSource.Play();
     }
     
@@ -47,4 +54,31 @@ public class SoundManager : MonoBehaviour
         musicSource.clip = placeSign;
         musicSource.Play();
     }
+    
+    public void MuteMusic()
+    { 
+        mutedMusic = true;
+        musicSource.volume = 0;
+    }
+
+    public void UnMuteMusic()
+    {
+        mutedMusic = false;
+        musicSource.volume = 50;
+
+    }
+    
+    public void MuteSFX()
+    { 
+        mutedSFX = true;
+        SFXSource.volume = 0;
+    }
+
+    public void UnMuteSFX()
+    {
+        mutedSFX = false;
+        SFXSource.volume = 50;
+
+    }
+    
 }

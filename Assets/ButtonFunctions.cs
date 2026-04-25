@@ -26,6 +26,6 @@ public class ButtonFunctions : MonoBehaviour
     {
         
         GameStateManager.Instance.HideSettings();
-
     }
+    
 }
