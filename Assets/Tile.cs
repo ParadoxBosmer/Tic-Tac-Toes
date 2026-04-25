@@ -34,7 +34,9 @@ public class Tile : MonoBehaviour
         {
             _spriteRenderer.sprite = spriteO;
         }
-
+        
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.placeSign);
+        
         switch (state) {
             case GameStates.Player1Turn:
                 {
@@ -51,8 +53,6 @@ public class Tile : MonoBehaviour
                     break;
                 }
         }
-
-
-
+        
     }
 }

@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     [Header("------- Audio Clip --------")]
 
     [SerializeField] AudioClip background;
-    [SerializeField] AudioClip placeSign;
+    [SerializeField] public AudioClip placeSign;
     [SerializeField] AudioClip winSound;
 
     [Header("------- Ticks --------")] 

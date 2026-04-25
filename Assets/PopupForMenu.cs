@@ -27,7 +27,8 @@ public class PopupForMenu : MonoBehaviour
     {
         if (settingsPopup != null)
             settingsPopup.SetActive(true);
-        GameStateManager.Instance.Pause();
+        if(GameStateManager.Instance!=null)
+            GameStateManager.Instance.Pause();
         
     }
     
@@ -35,8 +36,9 @@ public class PopupForMenu : MonoBehaviour
     {
         if (settingsPopup != null)
             settingsPopup.SetActive(false);
-
-        GameStateManager.Instance.Unpause();
+        
+        if(GameStateManager.Instance!=null)
+            GameStateManager.Instance.Unpause();
         
     }
     
