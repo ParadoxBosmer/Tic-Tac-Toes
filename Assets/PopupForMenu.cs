@@ -27,12 +27,17 @@ public class PopupForMenu : MonoBehaviour
     {
         if (settingsPopup != null)
             settingsPopup.SetActive(true);
+        GameStateManager.Instance.Pause();
+        
     }
     
     public void HideSettings()
     {
-        if (settingsPopup != null && settingsPopup.activeSelf)
+        if (settingsPopup != null)
             settingsPopup.SetActive(false);
+
+        GameStateManager.Instance.Unpause();
+        
     }
     
     public void ExitGame()

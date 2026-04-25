@@ -10,11 +10,8 @@ public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI winnerText;
     [SerializeField] private TextMeshProUGUI finalTimeText;
-    [SerializeField] private GameObject popup;
-    [SerializeField] private GameObject settingsPopup;
+    [SerializeField] private GameObject endPopup;
     public static GameStateManager Instance { get; private set; }
-
-
 
     private GameStates state;
     private bool paused ;
@@ -71,6 +68,18 @@ public class GameStateManager : MonoBehaviour
         return state;
     }
 
+    public void Pause()
+    {
+        paused = true;
+        GetComponentInParent<Timer>().playing = false;
+    }
+
+    public void Unpause()
+    {
+        paused = false;
+        GetComponentInParent<Timer>().playing = true;
+    }
+
     public void updateScore(int row, int col)
     {
         if (paused) return;
@@ -95,7 +104,7 @@ public class GameStateManager : MonoBehaviour
                 finalTimeText.text =
                     string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
 
-                popup.SetActive(true);
+                endPopup.SetActive(true);
                 state = GameStates.Player1Win;
             }
 
@@ -112,7 +121,7 @@ public class GameStateManager : MonoBehaviour
             if (player_2_win_con[row] == 3 || player_2_win_con[col + 3] == 3 || player_2_win_con[6] == 3 ||
                 player_2_win_con[7] == 3)
             {
-                popup.SetActive(true);
+                endPopup.SetActive(true);
                 float time = GetComponentInParent<Timer>().GetTime();
                 float minutes = Mathf.FloorToInt(time / 60);
                 float seconds = Mathf.FloorToInt(time % 60);
@@ -137,19 +146,6 @@ public class GameStateManager : MonoBehaviour
 
         GetComponentInParent<Timer>().RestartTimer();
     }
-
-    public void ShowSettings()
-    {
-        paused = true;
-        settingsPopup.SetActive(true);
-        Instance.GetComponentInParent<Timer>().PauseTimer();
-    }
-
-    public void HideSettings()
-    {
-        paused = false;
-        settingsPopup.SetActive(false);
-        Instance.GetComponentInParent<Timer>().StartTimer();
-    }
+    
 
 }

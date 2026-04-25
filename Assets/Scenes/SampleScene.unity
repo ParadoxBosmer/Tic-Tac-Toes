@@ -255,6 +255,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20077339}
   m_CullTransparentMesh: 1
+--- !u!1 &36437095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36437097}
+  - component: {fileID: 36437096}
+  m_Layer: 0
+  m_Name: PopupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &36437096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36437095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a220ddab116c743af4219a696f7a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPopup: {fileID: 1025949129}
+  themePicker: {fileID: 0}
+--- !u!4 &36437097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36437095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 880.0834, y: 332.35236, z: -2.0601873}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &37326021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1679,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 36437096}
         m_TargetAssemblyTypeName: PopupForMenu, Assembly-CSharp
         m_MethodName: HideSettings
         m_Mode: 1
@@ -2937,7 +2983,6 @@ GameObject:
   - component: {fileID: 1038274996}
   - component: {fileID: 1038274995}
   - component: {fileID: 1038274994}
-  - component: {fileID: 1038274997}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -3008,8 +3053,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1038274997}
-        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
+      - m_Target: {fileID: 36437096}
+        m_TargetAssemblyTypeName: PopupForMenu, Assembly-CSharp
         m_MethodName: ShowSettings
         m_Mode: 1
         m_Arguments:
@@ -3058,19 +3103,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038274992}
   m_CullTransparentMesh: 1
---- !u!114 &1038274997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038274992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ef1d16a77b6f94a90e9fb86351191a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1135100663}
 --- !u!1 &1102845853
 GameObject:
   m_ObjectHideFlags: 0
@@ -4930,8 +4962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winnerText: {fileID: 1357425775}
   finalTimeText: {fileID: 20077341}
-  popup: {fileID: 872465876}
-  settingsPopup: {fileID: 1025949129}
+  endPopup: {fileID: 0}
 --- !u!4 &1920457203
 Transform:
   m_ObjectHideFlags: 0
@@ -5336,3 +5367,4 @@ SceneRoots:
   - {fileID: 826675356}
   - {fileID: 1888694975}
   - {fileID: 813124986}
+  - {fileID: 36437097}

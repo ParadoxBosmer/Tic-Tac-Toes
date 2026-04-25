@@ -14,18 +14,5 @@ public class ButtonFunctions : MonoBehaviour
     {
         parent.SetActive(false);
     }
-
-    public void ShowSettings()
-    {
-        
-        GameStateManager.Instance.ShowSettings();
-
-    }
-
-    public void HideSettings()
-    {
-        
-        GameStateManager.Instance.HideSettings();
-    }
     
 }

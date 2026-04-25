@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private float elapsedTime;
 
-    private bool playing = true;
+    public bool playing = true;
 
     // Update is called once per frame
     void Update()
