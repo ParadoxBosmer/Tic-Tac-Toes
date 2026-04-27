@@ -5068,6 +5068,7 @@ GameObject:
   - component: {fileID: 1920457203}
   - component: {fileID: 1920457202}
   - component: {fileID: 1920457204}
+  - component: {fileID: 1920457205}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5093,6 +5094,7 @@ MonoBehaviour:
   crossesCount: {fileID: 787336465}
   circlesCount: {fileID: 580155686}
   lineDrawer: {fileID: 1391878887}
+  repo: {fileID: 1920457205}
   lineStartPoints:
   - {fileID: 1483226151}
   - {fileID: 1409594752}
@@ -5140,6 +5142,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 775663500}
   playing: 1
+--- !u!114 &1920457205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920457201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccde6038bb5d664f907c54231febc63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1961267687
 GameObject:
   m_ObjectHideFlags: 0

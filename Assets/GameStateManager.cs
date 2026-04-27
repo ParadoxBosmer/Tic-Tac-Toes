@@ -12,6 +12,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI crossesCount;
     [SerializeField] private TextMeshProUGUI circlesCount;
     [SerializeField] private LineDrawer lineDrawer;
+    [SerializeField] private GameRepository repo;
     
     [SerializeField] private Transform[] lineStartPoints;
     [SerializeField] private Transform[] lineEndPoints;
@@ -101,6 +102,8 @@ public class GameStateManager : MonoBehaviour
         finalTimeText.text =
             string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
 
+        
+        repo.addGame(time,state.ToString(),current_turns,"Assets/matches.txt");
         endPopup.SetActive(true);
     }
 
@@ -162,7 +165,7 @@ public class GameStateManager : MonoBehaviour
                 
                 if (winningIndex != -1)
                 {
-                    state = GameStates.Player1Win;
+                    state = GameStates.Player2Win;
                     current_turns++;
                     StartCoroutine(WinSequence("Player 2 won", winningIndex));
                 }
@@ -195,7 +198,7 @@ public class GameStateManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(time % 60);
         
         finalTimeText.text = string.Format("The round lasted {0:00} minutes and {1:00} seconds", minutes, seconds);
-        
+        repo.addGame(time,state.ToString(),current_turns,"Assets/matches.txt");
         endPopup.SetActive(true);
     }
 

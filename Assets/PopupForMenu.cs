@@ -7,6 +7,7 @@ public class PopupForMenu : MonoBehaviour
     [SerializeField] private GameObject endPopup;
 
     [SerializeField] private GameObject themePicker;
+    [SerializeField] private GameObject statisticsPopup;
     
     public void ShowThemePicker()
     {
@@ -40,7 +41,17 @@ public class PopupForMenu : MonoBehaviour
         
         if(GameStateManager.Instance!=null)
             GameStateManager.Instance.Unpause();
-        
+    }
+
+    public void ShowStatisticsPopup()
+    {
+        if(statisticsPopup!=null)
+            statisticsPopup.SetActive(true);
+    }
+    public void HideStatisticsPopup()
+    {
+        if(statisticsPopup!=null)
+            statisticsPopup.SetActive(false);
     }
     
     public void ExitGame()
