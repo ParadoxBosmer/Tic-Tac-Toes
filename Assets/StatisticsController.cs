@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatisticsController : MonoBehaviour
@@ -17,7 +16,7 @@ public class StatisticsController : MonoBehaviour
 
     public void Start()
     {
-        repo.checkStatistics(path);
+        repo.CheckStatistics(path);
         player1WinsText.text=repo.player1WinCount.ToString();
         player2WinsText.text= repo.player2WinCount.ToString();
         drawsText.text = repo.drawCount.ToString();

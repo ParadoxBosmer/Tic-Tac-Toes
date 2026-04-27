@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class button_press : MonoBehaviour
+public class ButtonPress : MonoBehaviour
 {
     [Header("Press")]
 
@@ -11,7 +11,7 @@ public class button_press : MonoBehaviour
 
     [Header("Mouse Feedback")]
 
-    private Vector3 defaultButtonScale;
+    private Vector3 _defaultButtonScale;
     [SerializeField] private Vector3 buttonPressScale;
     private SpriteRenderer _spriteRenderer;
 
@@ -20,13 +20,7 @@ public class button_press : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        defaultButtonScale = transform.localScale;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        _defaultButtonScale = transform.localScale;
     }
 
     private void OnMouseEnter()
@@ -52,6 +46,6 @@ public class button_press : MonoBehaviour
 
     private void OnMouseUp()
     {
-        transform.localScale = defaultButtonScale;
+        transform.localScale = _defaultButtonScale;
     }
 }

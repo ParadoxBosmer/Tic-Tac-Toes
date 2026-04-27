@@ -1,22 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PopupForMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settingsPopup;
     [SerializeField] private GameObject endPopup;
-
     [SerializeField] private GameObject themePicker;
     [SerializeField] private GameObject statisticsPopup;
+    [SerializeField] private GameObject exitComfirmation;
     
     public void ShowThemePicker()
     {
         themePicker.SetActive(true);
-        return;
     }
     public void HideThemePicker()
     {
-        if (themePicker != null && settingsPopup.activeSelf)
+        if (themePicker != null)
             themePicker.SetActive(false);
     }
 
@@ -56,8 +56,20 @@ public class PopupForMenu : MonoBehaviour
     
     public void ExitGame()
     {
-       Debug.Log("Exit the game");
+        Application.Quit();
     }
+
+    public void ShowExitConfirmation()
+    {
+        if(exitComfirmation!=null)
+            exitComfirmation.SetActive(true);
+    }
+    public void HideExitConfirmation()
+    {
+        if(exitComfirmation!=null)
+            exitComfirmation.SetActive(false);
+    }
+    
 
     public void Exit()
     {

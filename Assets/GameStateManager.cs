@@ -18,14 +18,14 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private Transform[] lineEndPoints;
     public static GameStateManager Instance { get; private set; }
 
-    private GameStates state;
-    private bool paused ;
-    private int max_turns = 9;
-    private int current_turns;
-    private int circles;
-    private int crosses;
-    int[] player_1_win_con = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-    int[] player_2_win_con = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+    private GameStates _state;
+    public bool paused;
+    private int _maxTurns = 9;
+    private int _currentTurns;
+    private int _circles;
+    private int _crosses;
+    int[] _player1WinCon = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+    int[] _player2WinCon = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
     
     public void Awake()
     {
@@ -36,46 +36,47 @@ public class GameStateManager : MonoBehaviour
         }
 
         Instance = this;
+        paused = false;
+
     }
 
     void Start()
     {
-        state = GameStates.Player1Turn;
-        paused = false;
-        current_turns = 0;
-        circles = 4;
-        crosses = 5;
-        crossesCount.text = crosses.ToString();
-        circlesCount.text = circles.ToString();
+        _state = GameStates.Player1Turn;
+        _currentTurns = 0;
+        _circles = 4;
+        _crosses = 5;
+        crossesCount.text = _crosses.ToString();
+        circlesCount.text = _circles.ToString();
     }
 
     public void UpdateText()
     {
-        switch (state)
+        switch (_state)
         {
             case GameStates.Player1Turn:
             {
-                crosses--;
-                crossesCount.text = crosses.ToString();
+                _crosses--;
+                crossesCount.text = _crosses.ToString();
                 break;
             }
             case GameStates.Player2Turn:
             {
-                circles--;
-                circlesCount.text = circles.ToString();
+                _circles--;
+                circlesCount.text = _circles.ToString();
                 break;
             }
         }
     }
     public void GetNextTurn()
     {
-        switch (state)
+        switch (_state)
         {
             case GameStates.Player1Turn:
             {
-                state = GameStates.Player2Turn;
-                current_turns++;
-                if (current_turns == max_turns)
+                _state = GameStates.Player2Turn;
+                _currentTurns++;
+                if (_currentTurns == _maxTurns)
                 {
                     DrawSequence();
                 }
@@ -84,8 +85,8 @@ public class GameStateManager : MonoBehaviour
         }
             case GameStates.Player2Turn:
             {
-                state = GameStates.Player1Turn;
-                current_turns++;
+                _state = GameStates.Player1Turn;
+                _currentTurns++;
                 break;
             }
         }
@@ -94,7 +95,7 @@ public class GameStateManager : MonoBehaviour
 
     private void DrawSequence()
     {
-        state = GameStates.Draw;
+        _state = GameStates.Draw;
         winnerText.text = "Draw";
         float time = GetComponentInParent<Timer>().GetTime();
         float minutes = Mathf.FloorToInt(time / 60);
@@ -103,13 +104,13 @@ public class GameStateManager : MonoBehaviour
             string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
 
         
-        repo.addGame(time,state.ToString(),current_turns,"Assets/matches.txt");
+        repo.AddGame(time,_state.ToString(),_currentTurns,"Assets/matches.txt");
         endPopup.SetActive(true);
     }
 
     public GameStates GetCurrentTurn()
     {
-        return state;
+        return _state;
     }
 
     public void Pause()
@@ -124,28 +125,26 @@ public class GameStateManager : MonoBehaviour
         GetComponentInParent<Timer>().playing = true;
     }
 
-    public void updateScore(int row, int col)
+    public void UpdateScore(int row, int col)
     {
-        if (paused) return;
-
-        switch (state)
+        switch (_state)
         {
             case GameStates.Player1Turn:
             {
                 UpdateText();
-                player_1_win_con[row]++;
-                player_1_win_con[col + 3]++;
+                _player1WinCon[row]++;
+                _player1WinCon[col + 3]++;
                 if (row == col)
-                    player_1_win_con[6]++;
+                    _player1WinCon[6]++;
                 if (2 - row == col)
-                    player_1_win_con[7]++;
+                    _player1WinCon[7]++;
 
-                int winningIndex = GetWinningIndex(player_1_win_con, row, col);
+                int winningIndex = GetWinningIndex(_player1WinCon, row, col);
                 
                 if (winningIndex != -1)
                 {
-                    state = GameStates.Player1Win;
-                    current_turns++;
+                    _state = GameStates.Player1Win;
+                    _currentTurns++;
                     StartCoroutine(WinSequence("Player 1 won", winningIndex));
                 }
 
@@ -154,19 +153,19 @@ public class GameStateManager : MonoBehaviour
             case GameStates.Player2Turn:
             {
                 UpdateText();
-                player_2_win_con[row]++;
-                player_2_win_con[col + 3]++;
+                _player2WinCon[row]++;
+                _player2WinCon[col + 3]++;
                 if (row == col)
-                    player_2_win_con[6]++;
+                    _player2WinCon[6]++;
                 if (2 - row == col)
-                    player_2_win_con[7]++;
+                    _player2WinCon[7]++;
 
-                int winningIndex = GetWinningIndex(player_2_win_con, row, col);
+                int winningIndex = GetWinningIndex(_player2WinCon, row, col);
                 
                 if (winningIndex != -1)
                 {
-                    state = GameStates.Player2Win;
-                    current_turns++;
+                    _state = GameStates.Player2Win;
+                    _currentTurns++;
                     StartCoroutine(WinSequence("Player 2 won", winningIndex));
                 }
                 
@@ -198,27 +197,27 @@ public class GameStateManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(time % 60);
         
         finalTimeText.text = string.Format("The round lasted {0:00} minutes and {1:00} seconds", minutes, seconds);
-        repo.addGame(time,state.ToString(),current_turns,"Assets/matches.txt");
+        repo.AddGame(time,_state.ToString(),_currentTurns,"Assets/matches.txt");
         endPopup.SetActive(true);
     }
 
     public void RestartGame()
     {
-        player_1_win_con = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-        player_2_win_con = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-        state = GameStates.Player1Turn;
-        current_turns = 0;
+        _player1WinCon = new[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+        _player2WinCon = new[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+        _state = GameStates.Player1Turn;
+        _currentTurns = 0;
 
         var tiles = GameObject.FindGameObjectsWithTag("Tile");
         foreach (var tile in tiles)
         {
-            var sprite = tile.GetComponent<SpriteRenderer>().sprite = null;
+            tile.GetComponent<SpriteRenderer>().sprite = null;
         }
 
-        crosses = 5;
-        circles = 4;
-        crossesCount.text = crosses.ToString();
-        circlesCount.text = circles.ToString();
+        _crosses = 5;
+        _circles = 4;
+        crossesCount.text = _crosses.ToString();
+        circlesCount.text = _circles.ToString();
         lineDrawer.RestartLine();
         
         GetComponentInParent<Timer>().RestartTimer();

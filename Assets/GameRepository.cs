@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameRepository : MonoBehaviour
@@ -11,14 +10,12 @@ public class GameRepository : MonoBehaviour
     public float averageDurationSeconds;
     public int averageDurationTurns;
     
-    public void addGame(float durationSeconds, string winner, int numberOfTurns,string filepath)
+    public void AddGame(float durationSeconds, string winner, int numberOfTurns,string filepath)
     {
         try
         {
-            using (System.IO.StreamWriter file= new System.IO.StreamWriter(@filepath, true))
-            {
-                file.WriteLine(numberOfTurns+ "," +winner+","+durationSeconds);
-            }
+            using System.IO.StreamWriter file= new System.IO.StreamWriter(@filepath, true);
+            file.WriteLine(numberOfTurns+ "," +winner+","+durationSeconds);
         }
         catch (Exception ex)
         {
@@ -26,12 +23,11 @@ public class GameRepository : MonoBehaviour
         }
     }
 
-    public void checkStatistics(string filepath)
+    public void CheckStatistics(string filepath)
     {
         float duration = 0;
         float turns = 0;
-        string[] recordNotFound = { "Record not found" };
-        
+
         try
         {
             string[] lines = System.IO.File.ReadAllLines(@filepath);

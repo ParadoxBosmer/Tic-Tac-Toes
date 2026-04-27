@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
 using TMPro;
-using Unity.Mathematics.Geometry;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    private float elapsedTime;
+    private float _elapsedTime;
 
     public bool playing = true;
 
@@ -15,15 +14,15 @@ public class Timer : MonoBehaviour
     {
         if(!playing) return;
         
-        elapsedTime += Time.deltaTime;
-        var minutes = Mathf.FloorToInt(elapsedTime / 60);
-        var seconds=Mathf.FloorToInt(elapsedTime % 60);
+        _elapsedTime += Time.deltaTime;
+        var minutes = Mathf.FloorToInt(_elapsedTime / 60);
+        var seconds=Mathf.FloorToInt(_elapsedTime % 60);
         timerText.text = String.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void RestartTimer()
     {
-        elapsedTime = 0;
+        _elapsedTime = 0;
         playing = true;
     }
 
@@ -40,7 +39,7 @@ public class Timer : MonoBehaviour
     public float GetTime()
     {
         playing = false;
-        return elapsedTime;
+        return _elapsedTime;
     }
 
 }
