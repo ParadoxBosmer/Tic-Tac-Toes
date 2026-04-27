@@ -4962,7 +4962,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winnerText: {fileID: 1357425775}
   finalTimeText: {fileID: 20077341}
-  endPopup: {fileID: 0}
+  endPopup: {fileID: 872465876}
+  crossesCount: {fileID: 787336465}
+  circlesCount: {fileID: 580155686}
 --- !u!4 &1920457203
 Transform:
   m_ObjectHideFlags: 0
@@ -4991,6 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 775663500}
+  playing: 1
 --- !u!1 &1961267687
 GameObject:
   m_ObjectHideFlags: 0
