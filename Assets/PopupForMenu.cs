@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PopupForMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settingsPopup;
+    [SerializeField] private GameObject endPopup;
 
     [SerializeField] private GameObject themePicker;
     
@@ -45,5 +46,13 @@ public class PopupForMenu : MonoBehaviour
     public void ExitGame()
     {
        Debug.Log("Exit the game");
+    }
+
+    public void Exit()
+    {
+        if (endPopup != null)
+        {
+            SceneManager.LoadScene("Scenes/Main Menu");
+        }
     }
 }

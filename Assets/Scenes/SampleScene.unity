@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPopup: {fileID: 1025949129}
+  endPopup: {fileID: 872465876}
   themePicker: {fileID: 0}
 --- !u!4 &36437097
 Transform:
@@ -3507,7 +3508,6 @@ GameObject:
   - component: {fileID: 1246084834}
   - component: {fileID: 1246084833}
   - component: {fileID: 1246084832}
-  - component: {fileID: 1246084831}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -3535,19 +3535,6 @@ RectTransform:
   m_AnchoredPosition: {x: 29, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1246084831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246084829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ef1d16a77b6f94a90e9fb86351191a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 872465876}
 --- !u!114 &1246084832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,8 +3579,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1246084831}
-        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
+      - m_Target: {fileID: 1920457202}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -4822,7 +4809,6 @@ GameObject:
   - component: {fileID: 1689761658}
   - component: {fileID: 1689761657}
   - component: {fileID: 1689761656}
-  - component: {fileID: 1689761659}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -4894,9 +4880,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1689761659}
-        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
-        m_MethodName: ExitGame
+      - m_Target: {fileID: 36437096}
+        m_TargetAssemblyTypeName: PopupForMenu, Assembly-CSharp
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4944,19 +4930,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689761654}
   m_CullTransparentMesh: 1
---- !u!114 &1689761659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689761654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ef1d16a77b6f94a90e9fb86351191a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 872465876}
 --- !u!1 &1793023652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5137,7 +5110,7 @@ MonoBehaviour:
   - {fileID: 369240829}
   - {fileID: 575239613}
   - {fileID: 575239613}
-  - {fileID: 1102845857}
+  - {fileID: 612374707}
 --- !u!4 &1920457203
 Transform:
   m_ObjectHideFlags: 0

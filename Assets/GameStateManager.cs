@@ -219,6 +219,7 @@ public class GameStateManager : MonoBehaviour
         lineDrawer.RestartLine();
         
         GetComponentInParent<Timer>().RestartTimer();
+        endPopup.SetActive(false);
     }
     
 
