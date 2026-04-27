@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public enum GameStates {Player1Turn,Player2Turn,Draw,Player1Win,Player2Win}
@@ -13,6 +11,10 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject endPopup;
     [SerializeField] private TextMeshProUGUI crossesCount;
     [SerializeField] private TextMeshProUGUI circlesCount;
+    [SerializeField] private LineDrawer lineDrawer;
+    
+    [SerializeField] private Transform[] lineStartPoints;
+    [SerializeField] private Transform[] lineEndPoints;
     public static GameStateManager Instance { get; private set; }
 
     private GameStates state;
@@ -23,7 +25,7 @@ public class GameStateManager : MonoBehaviour
     private int crosses;
     int[] player_1_win_con = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] player_2_win_con = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-
+    
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -74,15 +76,7 @@ public class GameStateManager : MonoBehaviour
                 current_turns++;
                 if (current_turns == max_turns)
                 {
-                    state = GameStates.Draw;
-                    winnerText.text = "Draw";
-                    float time = GetComponentInParent<Timer>().GetTime();
-                    float minutes = Mathf.FloorToInt(time / 60);
-                    float seconds = Mathf.FloorToInt(time % 60);
-                    finalTimeText.text =
-                        string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
-
-                    endPopup.SetActive(true);
+                    DrawSequence();
                 }
 
                 break;
@@ -95,6 +89,19 @@ public class GameStateManager : MonoBehaviour
             }
         }
         
+    }
+
+    private void DrawSequence()
+    {
+        state = GameStates.Draw;
+        winnerText.text = "Draw";
+        float time = GetComponentInParent<Timer>().GetTime();
+        float minutes = Mathf.FloorToInt(time / 60);
+        float seconds = Mathf.FloorToInt(time % 60);
+        finalTimeText.text =
+            string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
+
+        endPopup.SetActive(true);
     }
 
     public GameStates GetCurrentTurn()
@@ -130,20 +137,13 @@ public class GameStateManager : MonoBehaviour
                 if (2 - row == col)
                     player_1_win_con[7]++;
 
-                if (player_1_win_con[row] == 3 || player_1_win_con[col + 3] == 3 || player_1_win_con[6] == 3 ||
-                    player_1_win_con[7] == 3)
+                int winningIndex = GetWinningIndex(player_1_win_con, row, col);
+                
+                if (winningIndex != -1)
                 {
-
-                    winnerText.text = "PLayer 1 won";
-                    float time = GetComponentInParent<Timer>().GetTime();
-                    float minutes = Mathf.FloorToInt(time / 60);
-                    float seconds = Mathf.FloorToInt(time % 60);
-                    finalTimeText.text =
-                        string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
-
-                    endPopup.SetActive(true);
                     state = GameStates.Player1Win;
                     current_turns++;
+                    StartCoroutine(WinSequence("Player 1 won", winningIndex));
                 }
 
                 break;
@@ -158,22 +158,45 @@ public class GameStateManager : MonoBehaviour
                 if (2 - row == col)
                     player_2_win_con[7]++;
 
-                if (player_2_win_con[row] == 3 || player_2_win_con[col + 3] == 3 || player_2_win_con[6] == 3 ||
-                    player_2_win_con[7] == 3)
+                int winningIndex = GetWinningIndex(player_2_win_con, row, col);
+                
+                if (winningIndex != -1)
                 {
-                    endPopup.SetActive(true);
-                    float time = GetComponentInParent<Timer>().GetTime();
-                    float minutes = Mathf.FloorToInt(time / 60);
-                    float seconds = Mathf.FloorToInt(time % 60);
-                    finalTimeText.text = string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes,
-                        seconds);
-                    state = GameStates.Player2Win;
+                    state = GameStates.Player1Win;
                     current_turns++;
+                    StartCoroutine(WinSequence("Player 2 won", winningIndex));
                 }
-
+                
                 break;
             }
         }
+    }
+    
+    private int GetWinningIndex(int[] winConditions, int row, int col)
+    {
+        if (winConditions[col + 3] == 3) return col + 3;
+        if (winConditions[row] == 3) return row;
+        if (winConditions[6] == 3) return 6;
+        if (winConditions[7] == 3) return 7;
+        
+        return -1; // No win yet
+    }
+    private IEnumerator WinSequence(string winnerString, int winIndex)
+    {
+        Vector3 startPoint = lineStartPoints[winIndex].position;
+        Vector3 endPoint = lineEndPoints[winIndex].position;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayWinSound();
+        yield return StartCoroutine(lineDrawer.AnimateLine(startPoint, endPoint));
+
+        winnerText.text = winnerString;
+        float time = GetComponentInParent<Timer>().GetTime();
+        float minutes = Mathf.FloorToInt(time / 60);
+        float seconds = Mathf.FloorToInt(time % 60);
+        
+        finalTimeText.text = string.Format("The round lasted {0:00} minutes and {1:00} seconds", minutes, seconds);
+        
+        endPopup.SetActive(true);
     }
 
     public void RestartGame()
@@ -193,7 +216,8 @@ public class GameStateManager : MonoBehaviour
         circles = 4;
         crossesCount.text = crosses.ToString();
         circlesCount.text = circles.ToString();
-
+        lineDrawer.RestartLine();
+        
         GetComponentInParent<Timer>().RestartTimer();
     }
     

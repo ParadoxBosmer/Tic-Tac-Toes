@@ -35,20 +35,20 @@ public class Tile : MonoBehaviour
             _spriteRenderer.sprite = spriteO;
         }
         if(SoundManager.Instance!=null)
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.placeSign);
+            SoundManager.Instance.PlayPlaceSound();
         
         switch (state) {
             case GameStates.Player1Turn:
                 {
                     _spriteRenderer.sprite = spriteX;
-                    GameStateManager.Instance.updateScore(x, y);
+                    GameStateManager.Instance.updateScore(y, x);
                     GameStateManager.Instance.GetNextTurn();
                     break;
                 }
             case GameStates.Player2Turn:
                 {
                     _spriteRenderer.sprite = spriteO;
-                    GameStateManager.Instance.updateScore(x, y);
+                    GameStateManager.Instance.updateScore(y, x);
                     GameStateManager.Instance.GetNextTurn();
                     break;
                 }

@@ -45,14 +45,12 @@ public class SoundManager : MonoBehaviour
     }
     
     public void PlayWinSound()
-    {
-        musicSource.clip = winSound;
-        musicSource.Play();
+    { 
+        SFXSource.PlayOneShot(winSound);
     }
     public void PlayPlaceSound()
     {
-        musicSource.clip = placeSign;
-        musicSource.Play();
+        SFXSource.PlayOneShot(placeSign);
     }
     
     public void MuteMusic()

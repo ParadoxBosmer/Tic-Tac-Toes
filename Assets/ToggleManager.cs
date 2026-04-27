@@ -9,6 +9,7 @@ public class ToggleManager : MonoBehaviour
 
     void Start()
     {
+        if (SoundManager.Instance == null) return;
         musicToggle.SetIsOnWithoutNotify(!SoundManager.Instance.mutedMusic);
         sfxToggle.SetIsOnWithoutNotify(!SoundManager.Instance.mutedSFX);
 
@@ -18,6 +19,8 @@ public class ToggleManager : MonoBehaviour
 
     private void ToggleMusic(bool isToggleOn)
     {
+        if (SoundManager.Instance == null) return;
+
         if (isToggleOn)
             SoundManager.Instance.UnMuteMusic();
         else
@@ -26,6 +29,8 @@ public class ToggleManager : MonoBehaviour
 
     private void ToggleSFX(bool isToggleOn)
     {
+        if (SoundManager.Instance == null) return;
+
         if (isToggleOn)
             SoundManager.Instance.UnMuteSFX();
         else
