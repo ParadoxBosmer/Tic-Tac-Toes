@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] AudioClip background;
     [SerializeField] public AudioClip placeSign;
+    [SerializeField] public AudioClip clickSound;
     [SerializeField] AudioClip winSound;
 
     [Header("------- Ticks --------")] 
@@ -77,6 +78,10 @@ public class SoundManager : MonoBehaviour
         mutedSFX = false;
         SFXSource.volume = 50;
 
+    }
+    public void ButtonClickSFX()
+    {
+        SFXSource.PlayOneShot(clickSound);
     }
     
 }

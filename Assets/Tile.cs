@@ -11,6 +11,8 @@ public class Tile : MonoBehaviour
     void Start()
     {
         _spriteRenderer=GetComponentInParent<SpriteRenderer>();
+        spriteX = DataHandler.Instance.themeIndexX;
+        spriteO = DataHandler.Instance.themeIndexO;
     }
 
     // Update is called once per frame
