@@ -104,7 +104,7 @@ public class GameStateManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(time % 60);
         finalTimeText.text =
             string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
-
+        endPopup.SetActive(true);
         repo.AddGame(time, _state.ToString(), _currentTurns, savePath);
     }
 
@@ -195,10 +195,10 @@ public class GameStateManager : MonoBehaviour
         float time = GetComponentInParent<Timer>().GetTime();
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
-        endPopup.SetActive(true);
 
         finalTimeText.text = string.Format("The round lasted {0:00} minutes and {1:00} seconds", minutes, seconds);
-        repo.AddGame(time, _state.ToString(), _currentTurns, savePath);
+        endPopup.SetActive(true);
+        repo.AddGame(time, _state.ToString(), _currentTurns, DataHandler.Instance.savePath);
     }
 
     public void RestartGame()
