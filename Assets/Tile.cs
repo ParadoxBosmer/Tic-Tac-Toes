@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] int x;
     [SerializeField] int y;
@@ -10,14 +11,14 @@ public class Tile : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spriteRenderer=GetComponentInParent<SpriteRenderer>();
+        if (DataHandler.Instance == null) return;
+        
         spriteX = DataHandler.Instance.themeIndexX;
         spriteO = DataHandler.Instance.themeIndexO;
     }
     
-    private void OnMouseDown()
-    {
-        if (spriteRenderer.sprite != null || GameStateManager.Instance.paused) return;
+    public void OnPointerClick(PointerEventData eventData) {
+        if (spriteRenderer.sprite != null) return;
         
         var state = GameStateManager.Instance.GetCurrentTurn();
     

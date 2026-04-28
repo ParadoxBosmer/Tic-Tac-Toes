@@ -14,7 +14,7 @@ public class GameRepository : MonoBehaviour
     {
         try
         {
-            using System.IO.StreamWriter file= new System.IO.StreamWriter(@filepath, true);
+            using System.IO.StreamWriter file= new System.IO.StreamWriter(filepath, true);
             file.WriteLine(numberOfTurns+ "," +winner+","+durationSeconds);
         }
         catch (Exception ex)
@@ -30,7 +30,7 @@ public class GameRepository : MonoBehaviour
 
         try
         {
-            string[] lines = System.IO.File.ReadAllLines(@filepath);
+            string[] lines = System.IO.File.ReadAllLines(filepath);
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] fields = lines[i].Split(',');

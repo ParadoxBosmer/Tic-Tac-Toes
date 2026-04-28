@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class GameStateManager : MonoBehaviour
     private int _maxTurns = 9;
     private int _currentTurns;
     private int _circles;
+    private string savePath;
     private int _crosses;
     int[] _player1WinCon = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] _player2WinCon = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -37,7 +39,7 @@ public class GameStateManager : MonoBehaviour
 
         Instance = this;
         paused = false;
-
+        savePath=DataHandler.Instance.savePath;
     }
 
     void Start()
@@ -103,9 +105,7 @@ public class GameStateManager : MonoBehaviour
         finalTimeText.text =
             string.Format("The round laster {0:00} minutes and {1:00} seconds", minutes, seconds);
 
-        
-        repo.AddGame(time,_state.ToString(),_currentTurns,"Assets/matches.txt");
-        endPopup.SetActive(true);
+        repo.AddGame(time, _state.ToString(), _currentTurns, savePath);
     }
 
     public GameStates GetCurrentTurn()
@@ -195,10 +195,10 @@ public class GameStateManager : MonoBehaviour
         float time = GetComponentInParent<Timer>().GetTime();
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
-        
-        finalTimeText.text = string.Format("The round lasted {0:00} minutes and {1:00} seconds", minutes, seconds);
-        repo.AddGame(time,_state.ToString(),_currentTurns,"Assets/matches.txt");
         endPopup.SetActive(true);
+
+        finalTimeText.text = string.Format("The round lasted {0:00} minutes and {1:00} seconds", minutes, seconds);
+        repo.AddGame(time, _state.ToString(), _currentTurns, savePath);
     }
 
     public void RestartGame()

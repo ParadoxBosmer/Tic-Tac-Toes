@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -11,11 +12,12 @@ public class StatisticsController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI averageDurationTurnsText;
 
     [SerializeField] private GameRepository repo;
-    [SerializeField] private String path;
+    private String path;
     
 
     public void Start()
     {
+        path = DataHandler.Instance.savePath;
         repo.CheckStatistics(path);
         player1WinsText.text=repo.player1WinCount.ToString();
         player2WinsText.text= repo.player2WinCount.ToString();

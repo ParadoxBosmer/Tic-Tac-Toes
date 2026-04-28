@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public class DataHandler : MonoBehaviour
@@ -7,6 +8,7 @@ public class DataHandler : MonoBehaviour
 
         public Sprite themeIndexX;
         public Sprite themeIndexO;
+        public string savePath;
 
         private void Awake()
         {
@@ -19,6 +21,20 @@ public class DataHandler : MonoBehaviour
             {
                 Destroy(gameObject); 
             }
+            
+            
+            savePath = Path.Combine(Application.persistentDataPath, "matches.txt");
+                if (!File.Exists(savePath))
+                {
+                
+                    File.WriteAllText(savePath, ""); 
+            
+                    Debug.Log("Created new match file at: " + savePath);
+                }
+                else
+                {
+                    Debug.Log("Match file already exists at: " + savePath);
+                }
         }
     
 }

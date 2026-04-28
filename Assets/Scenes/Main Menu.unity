@@ -2398,7 +2398,6 @@ MonoBehaviour:
   averageDurationSecondsText: {fileID: 1151800974}
   averageDurationTurnsText: {fileID: 993696209}
   repo: {fileID: 523316976}
-  path: Assets/matches.txt
 --- !u!1 &602596040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,8 +3771,8 @@ RectTransform:
   m_Children:
   - {fileID: 1192197584}
   - {fileID: 1595615128}
-  - {fileID: 1411608233}
   - {fileID: 523316973}
+  - {fileID: 1411608233}
   - {fileID: 305933112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5034,6 +5033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeIndexX: {fileID: 0}
   themeIndexO: {fileID: 0}
+  savePath: 
 --- !u!1 &1256596254
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,7 +5706,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: restartGame
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
       - m_Target: {fileID: 336324808}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ButtonClickSFX
@@ -5718,7 +5718,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1413300509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6793,7 +6793,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1575124437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7192,7 +7192,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: restartGame
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
       - m_Target: {fileID: 336324808}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ButtonClickSFX
@@ -7204,7 +7204,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1725040093
 MonoBehaviour:
   m_ObjectHideFlags: 0
